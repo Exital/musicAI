@@ -1,0 +1,51 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+
+{% block page-title %}{% endblock %}
+
+{% block title %}מבוא{% endblock %}
+
+{% block body %}
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>מבוא למוסיקה וקבצי Midi</h2>
+                <br><br>
+                <p style="font-size: 120%;">
+                    כל צליל מורכב מגובה הצליל וממשך הזמן שבו הוא מתנגן.
+                </p>
+                <p style="font-size: 120%;">
+                    התאוריה של המוזיקה מחלקת את האוקטבה, המרווח בין שני צלילים שתדירותו של האחד מהם היא חצי(או פי 2) מתדירותו של השני, לסדרה של 12 תווים שבהם ניתן להשתמש על מנת להלחין יצירות שונות. סידרה זו נקראת "סולם כרומטי" והיא נראית כך:
+                </p>
+                <img src="{% static 'img/img_1.png' %}" alt="chromatic C" style="max-height: 100%; max-width: 100%;">
+                <br><br>
+                <p>
+                    סימון גובה מדעי(SPN), הידוע גם בשם סימון גובה תקן אמריקאי(ASPN) וסימון גובה בינלאומי(IPN), הוא שיטה לציון גובה המוסיקה על ידי שילוב של שם תו מוזיקלי ומספר זיהוי האוקטבה של התו, כדוגמת C4). סימון זה מספק אמצעי חד משמעי לזיהוי תו במונחים של סימון טקסטואלי ולא תדר ולכן ניעזר בו על מנת לבנות מודל של ה-Dataset איתו נעבוד.
+                </p>
+                <br>
+                <p>
+                    לצורך כך, נשתמש בפרוטוקול ייצוג מוזיקלי בשם MIDI , Musical Instrument Digital Interface, המשמש להעברת פקודות מוזיקליות בין כלי נגינה אלקטרוניים. פרוטוקול זה מאפשר למוזיקאי אחד לנגן על מספר כלים שונים באמצעות תוכנת מחשב וכך למעשה הוא יוכל לשחק, לערוך ולהקליט מוזיקה.
+בפרויקט שלנו, נשתמש במודל זה על מנת לייצג את גובה המוסיקה(הצליל), על ידי שימוש במפת צלילים הממירה שמות למספרים, כך למשל המספר 60 מייצג את  C4:
+
+                </p>
+
+                <img src="{% static 'img/img_2.png' %}" alt="midi C4" style="max-height: 100%; max-width: 100%;">
+
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+                <p>
+                    במוזיקה המערבית נהוג לחלק את משכי הסלילים על בסיס המספר 2 או 4. החלוקה לשתיים נפוצה יותר ברוב המכריע של הסגנונות והיא מופיעה להלן:
+                </p>
+                <br><br>
+                <img src="{% static 'img/img_3.png' %}"  alt="chromatic C" style="max-height: 50%; max-width: 50%;  display: block;margin-left: auto;margin-right: auto;">
+            </div>
+        </div>
+</div>
+{% endblock %}

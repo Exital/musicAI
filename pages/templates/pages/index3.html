@@ -1,0 +1,28 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+
+{% block page-title %}{% endblock %}
+
+{% block title %}בית{% endblock %}
+
+{% block body %}
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>ברוכים הבאים לפרויקט רוקט - הלחנת מלודיות באמצעות בינה מלאכותית</h2>
+                <br><br>
+                <p style="font-size:120%;">
+                    כיום, לבינה מלאכותית קיימת השפעה ניכרת על כמעט כל התעשיות כמו בריאות, פיננסים, ניהול וכך גם על תעשיית המוזיקה.
+                </p>
+                <p style="font-size:120%;">
+                    הטכנולוגיה העדכנית ביותר מגלה דפוסים ותובנות במערכות נתונים גדולות ומסייעת ביצירת קטעים טובים להאזנה אך ייתכן שאלו לא יהיו שירים נצחיים במקומות גבוהים במצעדים. כלומר, הבינה המלאכותית בתחום המוזיקה יכולה ליצור יצירה שעובדת היטב עבור סרטוני וידיאו, משחקי רשת או אפילו מסע בחנויות. המוזיקה הנוצרת היא לא רק זולה יותר, אלא ברוב המקרים אף עדיפה על גרסאות אנושיות.
+                </p>
+                <audio src="{% static 'midis/file_example_WAV_1MG.wav' %}" type="audio/mpeg" controls="" controlslist="download">Your browser does not support the audio element.</audio>
+            </div>
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block head %}
+<link href="{% static 'assets/css/scrollspyNav.css' %}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery-step/jquery.steps.css' %}">
+<link rel="stylesheet" href="{% static 'style/styles.css' %}">
+<script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
+{% endblock %}
+
+{% block body %}
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h6>יצירת מלודיות פסנתר (כלי יחיד) באמצעות RNN LSTM</h6>
+
+                <p class="">ניתן לנגן בפסנתר כדי לקבוע את ה-seed ליצירת המלודיה.</p>
+            </div>
+        </div>
+
+</div>
+
+{% include 'virtual_piano/piano.html' %}
+<form method="POST">
+    {% csrf_token %}
+</form>
+{% if generated %}
+    <script>
+        MIDIjs.play('{% static 'midi/generated/mel.mid' %}');
+    </script>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'assets/js/scrollspyNav.js' %}"></script>
+    <script>
+    $('.loaderDiv').show();
+get('', function(data) {
+   alert(data);
+   $('.loaderDiv').hide();
+})
+    </script>
+{% endblock %}

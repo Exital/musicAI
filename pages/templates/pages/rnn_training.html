@@ -1,0 +1,40 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+
+{% block page-title %}{% endblock %}
+
+{% block title %}תהליך האימון{% endblock %}
+
+{% block body %}
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>תהליך הלמידה</h2>
+                <br><br>
+                <p>
+                    אנו עושים שימוש ב-dataloaders אשר מכינים את רצפי הלמידה מתוך הדטה סט המעובד.
+                    המטרה היא שבהינתן הדטה סט המעובד ה-dataloader יחזיר בכל שליפה של מידע רצפי למידה באורך 64 תווים ולייבל התו הבא ברצף.
+                </p>
+                <img src="{% static 'img/img_7.jpeg' %}"  alt="exmaple" style="max-height: 100%; max-width: 100%;  display: block;margin-left: auto;margin-right: auto;">
+
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <p>
+                    האימון מבוצע בצורה גנרית כמו אימון של רוב המודלים באמצעות ספריית torch.
+                </p>
+                <p>פסאודו קוד:</p>
+                <img src="{% static 'img/img_8.png' %}"  alt="exmaple" style="max-height: 60%; max-width: 60%;  display: block;margin-left: auto;margin-right: auto;">
+                <p>הסברים מפורטים יותר ניתן למצוא בדו״ח הפרויקט</p>
+            </div>
+        </div>
+</div>
+
+{% endblock %}

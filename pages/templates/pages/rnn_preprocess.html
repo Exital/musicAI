@@ -1,0 +1,144 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+
+{% block page-title %}{% endblock %}
+
+{% block title %}עיבוד מקדים{% endblock %}
+
+{% block body %}
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>שלבי העיבוד המקדים</h2>
+                <br><br>
+                <p>
+                    ראשית נתאר את שלבי העיבוד המקדים ולאחר מכן נפרט עליהם:
+                    <ol style="font-size: 120%">
+                      <li>סינון קבצים לא רצויים</li>
+                      <li>ביצוע parsing לקובץ עם Music21</li>
+                      <li>בניית קידוד לכל קובץ</li>
+                      <li>יצירת מיפוי בין סמלים למספרים שלמים</li>
+                      <li>שרשור כל הקידודים לרצף אחד</li>
+                    </ol>
+                </p>
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>סינון קבצים</h2>
+                <br><br>
+                <p>
+                    כל הקבצים עוברים סינון מקדים וקבצים שלא מתאימים ללמידה לא יעברו לשלבים הבאים.
+                </p>
+                <p>
+                    קבצים שלא מתאימים ללמידה כוללים: תווים ״נדירים״, כאלו שבדרך כלל לא משמשים במלודיות, או קבצים שהמלודיות בהם אינן במקצב 4/4.
+                </p>
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>שימוש ב-Music21</h2>
+                <br><br>
+                <p>
+                    Music21 היא ספריית python הנותנת ממשק פשוט להמרת קבצי midi לאובייקט python המכיל תווים, כלים, מקצבים וכל המידע הרלוונטי על המלודיה.
+                </p>
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>בניית קידוד</h2>
+                <br><br>
+                <p>
+כל קובץ יהפוך לקידוד הטקסטואלי ע"פ העקרונות הבאים:
+                </p>
+                <ul style="font-size: 120%">
+                    <li>
+                        שימוש בסדרות זמנים, מבנה נתונים שבו המידע הוא רצף שנלקח בנקודות זמן רצופות שוות מרווח.
+דגימת מנגינה בכל התו ה-16
+                    </li>
+                    <li>כל תו ייוצג ע"י המספר המיוחס אליו</li>
+                    <li>שימוש ב-"_" כסימבול עבור תו ממושך</li>
+                    <li>שימוש ב-"r" כסימבול של "מנוחה"</li>
+                    <li>שימוש ב-"/" כסימבול עבור סיום שיר</li>
+                </ul>
+
+                <p>
+                    לצורך המחשה, נשתמש בדוגמא הבאה:
+                </p>
+                <img src="{% static 'img/img_4.png' %}"  alt="exmaple" style="max-height: 100%; max-width: 100%;  display: block;margin-left: auto;margin-right: auto;">
+                <br>
+                <p>
+                    עבור החלק המסומן באדום נקבל את הייצוג הטקסטואלי:
+                </p>
+                <p dir="ltr">
+                    ["60, "_", "_", "_",
+                    "62", "_", "_", "_",
+                    "64", "_", "64", "_",
+                    "65", "_", "62", "_"]
+                </p>
+                <br>
+                <p>
+                    עד כה, העיבוד פשוט ומתייחס לתווים יחידים וכלי יחיד, כדי לעבד אקורדים וכלים נוספים נדרש ייצוג מתוחכם יותר.
+                </p>
+
+                <p>
+                    לדוגמת נגינת האקורד המורכב מהתווים שייצוגם 60 62 ו-64 יראה כך: 60.62.64
+                </p>
+                <p>
+                    ייצוג של מספר כלים עבור נקודת זמן אחת יהיה פשוט כתיבת הייצוג של כל הכלים ביחד מופרדים בפסיק לדוגמא עבור החלק המסומן במנגינה הבאה:
+                </p>
+                <img src="{% static 'img/img_5.png' %}"  alt="exmaple" style="max-height: 50%; max-width: 50%;  display: block;margin-left: auto;margin-right: auto;">
+                <br>
+                <p>
+                    יופיע הייצוג 60.62.63,64,60.62.63,64
+                </p>
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>יצירת מיפוי</h2>
+                <br><br>
+                <p>
+                    כל סימבול בייצוג ימופה למספר int שלם באופן חד חד ערכי
+                </p>
+                <br>
+                <img src="{% static 'img/img_6.png' %}"  alt="exmaple" style="max-height: 50%; max-width: 50%;  display: block;margin-left: auto;margin-right: auto;">
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>שרשור הקידודים ליצירת דטה סט ללמידה</h2>
+                <br><br>
+                <p>
+                    בשלב זה נייצר קידוד אחד ארוך מכל הקידודים ונשמור אותו כדטה סט מעובד.
+                </p>
+                <p>
+                    ניתן לשחק בעיבוד המקדים האינטראקטיבי כדי להבין את השלבים יותר לעומק.
+                </p>
+            </div>
+        </div>
+</div>
+
+{% endblock %}

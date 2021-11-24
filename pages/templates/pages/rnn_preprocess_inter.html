@@ -1,0 +1,182 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block head %}
+<link href="{% static 'assets/css/scrollspyNav.css' %}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery-step/jquery.steps.css' %}">
+<link rel="stylesheet" href="{% static 'style/styles.css' %}">
+{% endblock %}
+{% block title %}עיבוד מקדים אינטראקטיבי{% endblock %}
+
+{% block body %}
+<div class="col-lg-12  layout-spacing">
+    <div class="statbox widget box box-shadow">
+        <div class="widget-content widget-content-area">
+            <div id="circle-basic" class="">
+                <h3>טעינת קובץ Midi</h3>
+                <section>
+                    <div class="row">
+                        <p>לצורך העניין בואו ניצור קובץ midi בעזרת הפסנתר!</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 layout-spacing">
+                            <div class="widget widget-one">
+                                <div class="piano">
+                                    <div data-note="B" class="key white"></div>
+                                    <div data-note="Bb" class="key black"></div>
+                                    <div data-note="A" class="key white"></div>
+                                    <div data-note="Ab" class="key black"></div>
+                                    <div data-note="G" class="key white"></div>
+                                    <div data-note="Gb" class="key black"></div>
+                                    <div data-note="F" class="key white"></div>
+                                    <div data-note="E" class="key white"></div>
+                                    <div data-note="Eb" class="key black"></div>
+                                    <div data-note="D" class="key white"></div>
+                                    <div data-note="Db" class="key black"></div>
+                                    <div data-note="C" class="key white"></div>
+
+                                    <audio id="C" src="{% static 'notes/C.mp3' %}"></audio>
+                                    <audio id="Db" src="{% static 'notes/Db.mp3' %}"></audio>
+                                    <audio id="D" src="{% static 'notes/D.mp3' %}"></audio>
+                                    <audio id="Eb" src="{% static 'notes/Eb.mp3' %}"></audio>
+                                    <audio id="E" src="{% static 'notes/E.mp3' %}"></audio>
+                                    <audio id="F" src="{% static 'notes/F.mp3' %}"></audio>
+                                    <audio id="Gb" src="{% static 'notes/Gb.mp3' %}"></audio>
+                                    <audio id="G" src="{% static 'notes/G.mp3' %}"></audio>
+                                    <audio id="Ab" src="{% static 'notes/Ab.mp3' %}"></audio>
+                                    <audio id="A" src="{% static 'notes/A.mp3' %}"></audio>
+                                    <audio id="Bb" src="{% static 'notes/Bb.mp3' %}"></audio>
+                                    <audio id="B" src="{% static 'notes/B.mp3' %}"></audio>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 layout-spacing">
+                            <div class="widget widget-card-four">
+                                <div class="w-content">
+                                    <div id="glyphs">
+                                        <div class="g" dir="ltr">
+                                            <p id="score_info" style="font-size:12em">&#96&#52&#52&#52&#52&#52&#52&#52&#52</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <h3>קריאת קובץ ה-Midi</h3>
+                <section>
+                    <p>כל תו בקובץ Midi מתורגם להיות מספר</p>
+                    <p>כך נראה השיר שהלחנתם:</p>
+                    <p id="midi_info" style="font-size:50px"></p>
+                </section>
+                <h3>בניית קידוד ומילון ערכים</h3>
+                <section>
+                    <div class="row">
+                        <div class="col">
+                            <p>כל ערך Midi שמופיע באחד מהקבצים יקבל מספר סידורי ונוסיף תו חדש '/' תו שמסיים את השיר</p>
+                            <p>השיר שלכם כעת יראה כך:</p>
+                            <p id="after_mapping"></p>
+                        </div>
+                        <div class="col" dir="ltr">
+                            <div class="row">
+                                <div class="col">
+
+                                </div>
+                                <div class="col"></div>
+                                <div class="col">mapping = {'60': 1, '61': 2, '62': 3, '63': 3, '64': 4, '65': 5, '66': 6, '67': 7, '68': 8, '69': 9, '70': 10, '/': 11, '71': 12}</div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <h3>שרשור כל הרצפים</h3>
+                <section>
+                    <p>כעת נשרשר את כל קבצי ה-Midi לאחר שבוצע עבורם עיבוד מקדים לקבלת רצף אחד ארוך שנשתמש בו עבור תהליך הלמידה</p>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'assets/js/scrollspyNav.js' %}"></script>
+<script src="{% static 'plugins/jquery-step/jquery.steps.min.js' %}"></script>
+<script src="{% static 'plugins/jquery-step/custom-jquery.steps.js' %}"></script>
+<script>
+
+const WHITE_KEYS = ['z', 'x', 'c', 'v', 'b', 'n', 'm']
+const BLACK_KEYS = ['s', 'd', 'g', 'h', 'j']
+
+const keys = document.querySelectorAll('.key')
+const whiteKeys = document.querySelectorAll('.key.white')
+const blackKeys = document.querySelectorAll('.key.black')
+
+let index = 0
+
+let pressed = []
+
+const notes_to_font = {'A': '&#41', 'B': '&#95', 'C': '&#37', 'D': '&#94', 'E': '&#38', 'F': '&#42', 'G': '&#40',
+    'cleff': '&#96', 'empty': '&#52', 'Db': '&#78&#94', 'Eb': '&#77&#38', 'Gb': '&#62&#40', 'Ab': '&#63&#41',
+    'Bb': '&#376&#95', 'end': '&#45'}
+
+const notes_to_midi = {'C': 60, 'D': 62, 'E': 64, 'F': 65, 'G': 67, 'A': 69, 'B': 71, 'Db': 64, 'Eb': 63, 'Gb': 66, 'Ab': 68, 'Bb': 70}
+const midi_to_mapping = {'60': 1, '61': 2, '62': 3, '63': 3, '64': 4, '65': 5, '66': 6, '67': 7, '68': 8, '69': 9, '70': 10, '/': 11, '71': 12}
+
+function pressed_to_score_str(pressed){
+    let len = pressed.length
+    let score = notes_to_font["cleff"]
+    console.log(score)
+    for(let i = 0; i < len; i++){
+        score = score.concat(notes_to_font[pressed[i]])
+    }
+
+    if (len < 8){
+        for (let i =0; i < 8 - len; i++){
+            score = score.concat(notes_to_font["empty"])
+        }
+    }
+
+    return score
+}
+
+
+keys.forEach(key => {
+  key.addEventListener('click', () => playNote(key))
+})
+
+document.addEventListener('keydown', e => {
+  if (e.repeat) return
+  const key = e.key
+  const whiteKeyIndex = WHITE_KEYS.indexOf(key)
+  const blackKeyIndex = BLACK_KEYS.indexOf(key)
+
+  if (whiteKeyIndex > -1) playNote(whiteKeys[whiteKeyIndex])
+  if (blackKeyIndex > -1) playNote(blackKeys[blackKeyIndex])
+})
+
+function playNote(key) {
+  const noteAudio = document.getElementById(key.dataset.note)
+  noteAudio.currentTime = 0
+  noteAudio.play()
+  pressed[index % 8] = key.dataset.note
+  index++
+
+  console.log(pressed.join())
+    console.log(pressed_to_score_str(pressed))
+    console.log(get_midi_nums(pressed))
+  document.getElementById("score_info").innerHTML = pressed_to_score_str(pressed)
+     document.getElementById("midi_info").innerHTML = get_midi_nums(pressed)
+     document.getElementById("after_mapping").innerHTML = get_midi_nums(pressed).map(x => midi_to_mapping[x]).concat(11)
+  key.classList.add('active')
+  noteAudio.addEventListener('ended', () => {
+    key.classList.remove('active')
+  })
+}
+
+function get_midi_nums(pressed){
+    return pressed.map(x => notes_to_midi[x]);
+}
+
+</script>
+{% endblock %}
