@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4o+i%=72@fbo!1ni_+5m*$pko5kb@#uulg2vpsod0t3!q=t*wj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['musicAI.pythonanywhere.com', '127.0.0.1']
 
