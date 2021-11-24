@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-4o+i%=72@fbo!1ni_+5m*$pko5kb@#uulg2vpsod0t3!q=t*wj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['musicAI.pythonanywhere.com']
 
 
 # Application definition
