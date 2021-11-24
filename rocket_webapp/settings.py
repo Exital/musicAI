@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-4o+i%=72@fbo!1ni_+5m*$pko5kb@#uulg2vpsod0t3!q=t*wj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['musicAI.pythonanywhere.com']
+ALLOWED_HOSTS = ['musicAI.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -125,10 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),
-                    os.path.join(BASE_DIR, 'pages/static'),
-                    os.path.join(BASE_DIR, 'rnn_lstm/static/'),
-                    ]
+
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_ROOT = '/home/musicAI/musicAI/static'
 
