@@ -2,6 +2,7 @@ from django.shortcuts import render
 import os
 from rnn_lstm.src.melody_generation import MelodyGenerator
 from rocket_webapp.settings import BASE_DIR
+from rocket_webapp.settings import STATIC_ROOT
 
 
 def pages_home(request):
@@ -27,6 +28,10 @@ def rnn_lstm_generate(request):
         trained_model = os.path.join(BASE_DIR, 'rnn_lstm', 'static', 'trained_models', 'trained_erk')
         gen = MelodyGenerator(trained_model)
         song = gen.generate_melody(500, 64, 0.85, seed=seed)
-        gen.save_melody(song, file_name=os.path.join(BASE_DIR, 'rnn_lstm/static/midi/generated/mel.mid'))
+        if os.getenv('DEBUG'):
+            mel_path = os.path.join(BASE_DIR, 'rnn_lstm', 'static', 'midi', 'generated', 'mel.mid')
+        else:
+            mel_path = os.path.join(STATIC_ROOT, 'midi', 'generated', 'mel.mid')
+        gen.save_melody(song, file_name=mel_path)
         return render(request, 'pages/rnn_generate.html', {'generated': True})
     return render(request, 'pages/rnn_generate.html', {'generated': False})

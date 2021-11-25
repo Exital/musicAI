@@ -12,9 +12,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+project_folder = os.path.expanduser(BASE_DIR)  # adjust as appropriate
+load_dotenv(os.path.join(project_folder, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -24,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4o+i%=72@fbo!1ni_+5m*$pko5kb@#uulg2vpsod0t3!q=t*wj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['musicAI.pythonanywhere.com']
+ALLOWED_HOSTS = ['musicAI.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -125,12 +128,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),
-                    os.path.join(BASE_DIR, 'pages/static'),
-                    os.path.join(BASE_DIR, 'rnn_lstm/static/'),
-                    ]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_ROOT = '/home/musicAI/musicAI/static'
+if not DEBUG:
+    STATIC_ROOT = '/home/musicAI/musicAI/static'
+else:
+    STATIC_ROOT = ''
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
