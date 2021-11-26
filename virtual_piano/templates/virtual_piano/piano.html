@@ -59,6 +59,7 @@
 <form method="POST">{% csrf_token %}
     <input type="hidden" name="pressed" id="js_data_input">
     <input type="submit" value="צור לחן" class="mt-4 btn btn-primary"/>
+    <a class="mt-4 btn btn-danger" href="{% url 'pages:rnn_lstm_generate' %}" role="button">עצור נגינה</a>
 </form>
 
 <script>

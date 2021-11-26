@@ -57,10 +57,10 @@
                         <a href="{% url 'pages:dataset' %}"> בחירת דטה סט </a>
                     </li>
                     <li>
-                        <a href="component_accordion.html"> סט 2  </a>
+                        <a href="{% url 'pages:dataset-esac' %}"> Esac דטה סט </a>
                     </li>
                     <li>
-                        <a href="component_modal.html"> סט 3 </a>
+                        <a href="{% url 'pages:dataset-snes' %}"> Snes דטה סט </a>
                     </li>
                 </ul>
             </li>
@@ -132,7 +132,7 @@
                         <a href="{% url 'pages:rnn_lstm_generate' %}">Rnn Lstm כלי יחיד</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);">Rnn Lstm מספר כלים</a>
+                        <a href="{% url 'pages:rnn_lstm_generate_multi' %}">Rnn Lstm מספר כלים</a>
                     </li>
                     <li>
                         <a href="javascript:void(0);">GAN</a>

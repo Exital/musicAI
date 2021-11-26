@@ -1,18 +1,19 @@
 import json
+from .settings import DEFAULT_SEQ_LEN
 import numpy as np
 import torch
 from torch.utils.data import Dataset
 
 
 class MusicDataset(Dataset):
-    def __init__(self, list_ids: np.array, songs, dictionary_path: str):
+    def __init__(self, list_ids: np.array, songs, dictionary_path: str, seq_len=DEFAULT_SEQ_LEN):
         self.list_ids = list_ids
         self.all_songs_int = songs
         with open(dictionary_path, "r") as f:
             self.dictionary = json.load(f)
 
         self.vocabulary_size = len(self.dictionary)
-        self.sequence_length = 64
+        self.sequence_length = seq_len
         self.num_sequences = len(self.all_songs_int) - self.sequence_length
 
     @staticmethod

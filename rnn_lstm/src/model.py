@@ -16,7 +16,9 @@ class LSTM(nn.Module):
         self.fc = nn.Linear(hidden_size, num_classes)
 
     def forward(self, x):
+        # hidden state of the lstm
         h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(self.device)
+        # internal state of the lstm
         c0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(self.device)
 
         output, _ = self.lstm(x, (h0, c0))

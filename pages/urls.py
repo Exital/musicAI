@@ -28,6 +28,8 @@ urlpatterns = [
 
     # datasets
     path('dataset', TemplateView.as_view(template_name='pages/dataset.html'), name='dataset'),
+    path('dataset/esac', TemplateView.as_view(template_name='pages/esac_dataset.html'), name='dataset-esac'),
+    path('dataset/snes', TemplateView.as_view(template_name='pages/snes_dataset.html'), name='dataset-snes'),
 
     # RNN LSTM model
     path('rnn/preprocess', TemplateView.as_view(template_name='pages/rnn_preprocess.html'),
@@ -36,5 +38,7 @@ urlpatterns = [
          name='rnn-preprocess-inter'),
     path('rnn/generate', rnn_lstm_generate, name='rnn_lstm_generate'),
     path('rnn/intro', TemplateView.as_view(template_name='pages/rnn_intro.html'), name='rnn-intro'),
-    path('rnn/training', TemplateView.as_view(template_name='pages/rnn_training.html'), name='rnn-training')
+    path('rnn/training', TemplateView.as_view(template_name='pages/rnn_training.html'), name='rnn-training'),
+    path('rnn/generate/multi', rnn_lstm_generate_multi, name='rnn_lstm_generate_multi'),
+
 ]
