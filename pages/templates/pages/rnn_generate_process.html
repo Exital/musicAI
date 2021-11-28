@@ -1,0 +1,36 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+
+{% block page-title %}{% endblock %}
+
+{% block title %}מודל RNN LSTM{% endblock %}
+
+{% block body %}
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>תהליך היצירה</h2>
+                <br><br>
+                <p>
+                    בהינתן סדרת תווים, מודל RNN LSTM מאומן מסוגל לצפות את התו הבא המתאים למלודיה.
+                </p>
+                <p>
+                    נתחיל מ-"seed" כלשהו (תו בודד רנדומלי) וניתן למודל לחזות את התו הבא, נשרשר אותו ל-"seed" ונמשיך בחיזוי באופן איטרטיבי עד לחיזוי סיום המלודיה על ידי המודל.
+                </p>
+                <br>
+                <p>השיטה ניתנת להרחבה ליצירה של מלודיה בעלת כמה כלים באופן שמוסבר בדוח המלא.</p>
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+                <img src="{% static 'img/img_9.png' %}"  alt="exmaple" style="max-height: 100%; max-width: 100%;  display: block;margin-left: auto;margin-right: auto;">
+            </div>
+        </div>
+</div>
+
+{% endblock %}

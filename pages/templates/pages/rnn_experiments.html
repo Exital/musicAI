@@ -1,0 +1,83 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+
+{% block page-title %}{% endblock %}
+
+{% block title %}מודל RNN LSTM{% endblock %}
+
+{% block body %}
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>ניסויים במודל RNN LSTM</h2>
+                <br><br>
+                <p>
+                    המודל משתמש בערכים רבים בתור היפר פרמטרים - פרמטרים שיש לחקור אותם כדי לזהות מה הערך האידיאלי עבור משימת המודל.
+                    לצורך העניין נערכו ניסויים
+                     על פי שיטת KFold cross validation הידועה בתחום ה-deep learning.
+                </p>
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h4>בחירת אופטימייזר</h4>
+                <br><br>
+                <p>
+במהלך ניסוי זה, ביצענו לכל
+אופטימייזר 5Fold cross validation על dataset בגודל ממוצע ובחנו את דיוק המודל בכל Fold.  האופטיימיזרים שנבדקו הם שלושה אופטימייזרים הנפוצים:
+                </p>
+                <ul>
+                    <li>ADAM</li>
+                    <li>SGD</li>
+                    <li>RMSprop</li>
+                </ul>
+                <p>
+לאחר ניסוי זה, ניתן לראות מהגרף כי האופטימיזר SGD אינו מתאים באופן וודאי ולכן בחרנו את ADAM באופן שרירותי מאחר והתוצאות שלו ושל -RMSprop היו כמעט זהות.
+                </p>
+                <br>
+                <img src="{% static 'img/img_10.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;">
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h4>קביעת גודל ה-hidden layer</h4>
+                <br><br>
+                <p>
+במהלך ניסוי זה, לכל גודל מבין הגדלים {1024 ,512 , 256 ,128 ,64 ,32 ,16} ביצענו
+5Fold cross validation ובכל Fold חישבנו את דיוק המודל.
+תוצאות הניסוי הראו כי הגדלים 1024 ,512 ,256 הם הגדלים המתאימים ביותר למודל שלנו לצורך יצירת מלודיות ולכן בחרנו את 256 מאחר ולשלושת הגדלים דיוק כמעט זהה אך עם הגדלת ה-hidden layer , זמן האימון גדל באופן משמעותי ולכן בחרנו את הגודל הקטן ביותר שמשיג תוצאות טובות.
+                </p>
+                <br>
+                <img src="{% static 'img/img_11.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;">
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h4>קביעת אורך רצפי למידה</h4>
+                <br><br>
+                <p>
+במהלך הניסוי, השתמשנו ב-5Fold cross validation לכל אחד מהאורכים ומדדנו את דיוק המודל בממוצע.
+תוצאות הניסוי הראי כי הדיוקים הטובים ביותר התקבלו עבור אורכי רצפי למידה גדולים אך עם הגדלת רצף הלמידה, זמן הלמידה גדל בצורה ניכרת. לכן, בחרנו לעבוד עם גודל השווה ל- 64 שמספק דיוק טוב בזמן למידה סביר.
+                </p>
+                <br>
+                <img src="{% static 'img/img_12.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;">
+
+            </div>
+        </div>
+</div>
+
+{% endblock %}

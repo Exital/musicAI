@@ -20,7 +20,7 @@ from pages.views import *
 app_name = 'pages'
 urlpatterns = [
     # home
-    path('', TemplateView.as_view(template_name='pages/index3.html'), name='home'),
+    path('', TemplateView.as_view(template_name='pages/index.html'), name='home'),
     path('team', TemplateView.as_view(template_name='pages/the_team.html'), name='team'),
 
     # intro
@@ -40,5 +40,12 @@ urlpatterns = [
     path('rnn/intro', TemplateView.as_view(template_name='pages/rnn_intro.html'), name='rnn-intro'),
     path('rnn/training', TemplateView.as_view(template_name='pages/rnn_training.html'), name='rnn-training'),
     path('rnn/generate/multi', rnn_lstm_generate_multi, name='rnn_lstm_generate_multi'),
+    path('rnn/generate/process', TemplateView.as_view(template_name='pages/rnn_generate_process.html'),
+         name='rnn-generate-process'),
+    path('rnn/experiments', TemplateView.as_view(template_name='pages/rnn_experiments.html'), name='rnn-experiments'),
+
+
+    # GAN model
+    path('gan/generate', gan_generate, name='gan_generate'),
 
 ]

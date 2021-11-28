@@ -1,0 +1,53 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block head %}
+<link href="{% static 'assets/css/scrollspyNav.css' %}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery-step/jquery.steps.css' %}">
+<link rel="stylesheet" href="{% static 'style/styles.css' %}">
+<script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
+{% endblock %}
+
+{% block body %}
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>יצירת מלודיות עם מספר כלים באמצעות RNN LSTM</h2>
+                <br>
+                <p>
+                    לחץ על הכפתור ״צור לחן״ והמתן כדי ליצור לחן המשלב תופים, בס, פסנתר וכינורות.
+                </p>
+                <p>
+                    לא כל הלחנים מוצלחים, מומלץ לנסות כמה פעמים.
+                </p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="צור לחן" class="mt-4 btn btn-primary"/>
+                    <a class="mt-4 btn btn-danger" href="{% url 'pages:rnn_lstm_generate_multi' %}" role="button">עצור נגינה</a>
+
+                </form>
+
+            </div>
+        </div>
+
+</div>
+
+
+{% if generated %}
+    <script>
+        MIDIjs.play('{% static 'midi/generated/mel.mid' %}');
+    </script>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'assets/js/scrollspyNav.js' %}"></script>
+    <script>
+    $('.loaderDiv').show();
+get('', function(data) {
+   alert(data);
+   $('.loaderDiv').hide();
+})
+    </script>
+{% endblock %}

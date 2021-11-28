@@ -10,7 +10,7 @@ def pages_home(request):
     if request.method == 'POST':
         pressed = request.POST.get('pressed')
         print(pressed)
-    return render(request, 'pages/index3.html', {})
+    return render(request, 'pages/index.html', {})
 
 
 def rnn_preprocess_view(request):
@@ -52,3 +52,19 @@ def rnn_lstm_generate_multi(request):
         gen.save_melody(song, file_name=mel_path, instruments=instruments)
         return render(request, 'pages/rnn_generate_multi.html', {'generated': True})
     return render(request, 'pages/rnn_generate_multi.html', {'generated': False})
+
+
+def gan_generate(request):
+    instruments = [instrument.UnpitchedPercussion(), instrument.Piano(),
+                   instrument.ElectricBass(), instrument.StringInstrument()]
+    if request.method == "POST":
+        trained_model = os.path.join(BASE_DIR, 'rnn_lstm', 'static', 'trained_models', 'multi_tracks_model')
+        gen = MelodyGenerator(trained_model)
+        song = gen.generate_melody(500, 64, 0.85)
+        if os.getenv('DEBUG'):
+            mel_path = os.path.join(BASE_DIR, 'rnn_lstm', 'static', 'midi', 'generated', 'mel.mid')
+        else:
+            mel_path = os.path.join(STATIC_ROOT, 'midi', 'generated', 'mel.mid')
+        gen.save_melody(song, file_name=mel_path, instruments=instruments)
+        return render(request, 'pages/gan_generate.html', {'generated': True})
+    return render(request, 'pages/gan_generate.html', {'generated': False})

@@ -10,7 +10,6 @@
         </ul>
 
         <ul class="list-unstyled menu-categories" id="topAccordion">
-
             <li class="menu single-menu active">
                 <a href="#dashboard" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle autodroprown">
                     <div class="">
@@ -86,6 +85,9 @@
                     <li>
                         <a href="{% url 'pages:rnn-training' %}">תהליך הלמידה</a>
                     </li>
+                    <li>
+                        <a href="{% url 'pages:rnn-generate-process' %}">תהליך היצירה</a>
+                    </li>
                 </ul>
             </li>
 
@@ -99,7 +101,19 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="forms"  data-parent="#topAccordion">
                     <li>
-                        <a href="form_bootstrap_basic.html"> עיבוד מקדים </a>
+                        <a href="javascript:void(0);">מבוא ומוטיבציה</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">שלבי עיבוד מקדים</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">עיבוד מקדים אינטראקטיבי</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">תהליך הלמידה</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">תהליך היצירה</a>
                     </li>
                 </ul>
             </li>
@@ -114,7 +128,7 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="page"  data-parent="#topAccordion">
                     <li>
-                        <a href="pages_helpdesk.html"> ניסוי 1 </a>
+                        <a href="{% url 'pages:rnn-experiments' %}"> ניסויים במודל RNN LSTM </a>
                     </li>
                 </ul>
             </li>
@@ -135,7 +149,7 @@
                         <a href="{% url 'pages:rnn_lstm_generate_multi' %}">Rnn Lstm מספר כלים</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);">GAN</a>
+                        <a href="{% url 'pages:gan_generate' %}">GAN</a>
                     </li>
                 </ul>
             </li>
