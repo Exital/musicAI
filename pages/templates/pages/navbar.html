@@ -40,6 +40,9 @@
                     <li>
                         <a href="{% url 'pages:intro' %}"> מבוא לקבצי midi </a>
                     </li>
+                    <li>
+                        <a href="{% url 'pages:challenges' %}"> אתגרים ביצירת מלודיות </a>
+                    </li>
                 </ul>
             </li>
 
@@ -101,7 +104,10 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="forms"  data-parent="#topAccordion">
                     <li>
-                        <a href="javascript:void(0);">מבוא ומוטיבציה</a>
+                        <a href="{% url 'pages:gan-intro' %}">מבוא ומוטיבציה</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'pages:gan-challenges' %}">אתגרים במודל GAN</a>
                     </li>
                     <li>
                         <a href="javascript:void(0);">שלבי עיבוד מקדים</a>
@@ -129,6 +135,9 @@
                 <ul class="collapse submenu list-unstyled" id="page"  data-parent="#topAccordion">
                     <li>
                         <a href="{% url 'pages:rnn-experiments' %}"> ניסויים במודל RNN LSTM </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'pages:gan-experiments' %}"> ניסוי במודל GAN </a>
                     </li>
                 </ul>
             </li>

@@ -25,6 +25,7 @@ urlpatterns = [
 
     # intro
     path('intro', TemplateView.as_view(template_name='pages/intro_to_midi.html'), name='intro'),
+    path('challenges', TemplateView.as_view(template_name='pages/challenges.html'), name='challenges'),
 
     # datasets
     path('dataset', TemplateView.as_view(template_name='pages/dataset.html'), name='dataset'),
@@ -46,6 +47,9 @@ urlpatterns = [
 
 
     # GAN model
+    path('gan/intro', TemplateView.as_view(template_name='pages/gan_intro.html'), name='gan-intro'),
+    path('gan/challenges', TemplateView.as_view(template_name='pages/gan_challenges.html'), name='gan-challenges'),
     path('gan/generate', gan_generate, name='gan_generate'),
+    path('gan/experiments', TemplateView.as_view(template_name='pages/gan_experiments.html'), name='gan-experiments'),
 
 ]

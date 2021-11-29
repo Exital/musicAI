@@ -1,0 +1,84 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+
+{% block page-title %}{% endblock %}
+
+{% block title %}מודל GAN{% endblock %}
+
+{% block body %}
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>ניסוי למציאת אופטימייזר מתאים</h2>
+                <br><br>
+                <p>
+בניסוי זה רצינו לבדוק באיזה אופטימייזר כדאי להשתמש עבור מודל ה-GAN.
+                    לצורך העניין בדקנו את שלושת האופטימייזרים הנפוצים:
+                </p>
+            <ul>
+                <li>SGD</li>
+                <li>ADAM</li>
+                <li>RMSprop</li>
+            </ul>
+                <p>
+במהלך הניסוי ביצענו שלושה אימונים, כאשר בכל אחד מהם השתמשנו באופטימייזר אחר עבור הגנרטור והמבקר￼￼
+ולאחר 100 אפוקים נמדדו תוצאות היצירה הבאות:
+                </p>
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h4>תוצאות SGD</h4>
+                <br><br>
+                <p>
+                    ניתן לראות את תוצאות הניסוי באיור מטה, אשר מראות כי המודל לא התכנס כלל והמנגינה המוצגת מהווה￼￼
+רעש רנדומי.
+                </p>
+                <br>
+                <img src="{% static 'img/img_14.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;">
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h4>תוצאות ADAM</h4>
+                <br><br>
+                <p>
+יתן לראות את תוצאות הניסוי באיור מטה, אשר מראות שהמודל אכן ביצע למידה והמנגינה שמוצגת￼￼￼
+הגיונית וטובה הרבה יותר מתוצאות של ה-SGD.
+                </p>
+                <br>
+                <img src="{% static 'img/img_15.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;">
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h4>תוצאות SGD</h4>
+                <br><br>
+                <p>
+ניתן לראות את תוצאות הניסוי באיור מטה, אשר מראות שהמודל אכן ביצע למידה והמנגינה שמוצגת בצורה הגיונית וטובה.
+                </p>
+                <br>
+                <img src="{% static 'img/img_16.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;">
+                <br>
+                <p>
+                    לאור תוצאות הניסוי הגענו למסקנה כי SGD אינו מתאים לשימוש המודל וכי ניתן לבחור בין RMSprop ו-ADAM באופן שרירותי, לכן בחרנו ב-ADAM.
+                </p>
+            </div>
+        </div>
+</div>
+
+{% endblock %}
