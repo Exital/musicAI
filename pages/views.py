@@ -57,7 +57,7 @@ def rnn_lstm_generate_multi(request):
 
 def gan_generate(request):
     if request.method == "POST":
-        trained_model = os.path.join(BASE_DIR, 'gan', 'static', 'gan_trained_models', 'pre_trained_models', 'ModelA', 'generator.pt')
+        trained_model = os.path.join(BASE_DIR, 'gan', 'static', 'gan_trained_models', 'pre_trained_models', 'modelA', 'generator.pt')
         if os.getenv('DEBUG'):
             mel_path = os.path.join(BASE_DIR, 'rnn_lstm', 'static', 'midi', 'generated')
         else:
