@@ -1,0 +1,55 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block head %}
+<link href="{% static 'assets/css/scrollspyNav.css' %}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery-step/jquery.steps.css' %}">
+<link rel="stylesheet" href="{% static 'style/styles.css' %}">
+{% endblock %}
+{% block title %}עיבוד מקדים אינטראקטיבי{% endblock %}
+
+{% block body %}
+<div class="col-lg-12  layout-spacing">
+    <div class="statbox widget box box-shadow">
+        <div class="widget-content widget-content-area">
+            <div id="circle-basic" class="">
+                <h3>טעינת קובץ Midi</h3>
+                <section>
+                    <p>נטען קובץ Midi לדוגמא ונשים לב למספר הכלים הרבים שבו.</p>
+                    <img src="{% static 'img/img_22.png' %}"  alt="exmaple" style="max-height: 60%; max-width: 60%;  display: block;margin-left: auto;margin-right: auto;">
+                </section>
+                <h3>איחוד הכלים</h3>
+                <section>
+                    <p>נאחד את כל הכלים הדומים ל-4 משפחות, תופים, פסנתר, פס ומקהלה.</p>
+                    <img src="{% static 'img/img_23.jpeg' %}"  alt="exmaple" style="max-height: 60%; max-width: 60%;  display: block;margin-left: auto;margin-right: auto;">
+                </section>
+                <h3>בניית ייצוג הקובץ</h3>
+                <section>
+                    <p>לצורך הדוגמה נייצר ייצוג של הקטע המסומן באדום:</p>
+                    <img src="{% static 'img/img_25.png' %}"  alt="exmaple" style="max-height: 30%; max-width: 30%;  display: block;margin-left: auto;margin-right: auto;">
+                    <br>
+                    <p>ניתן לראות בדוגמה תיבה אחת של כלי אחד הציר האנכי מייצג את הזמן והציר האופקי את הטונים השונים.</p>
+                    <img src="{% static 'img/img_24.jpeg' %}"  alt="exmaple" style="max-height: 30%; max-width: 30%;  display: block;margin-left: auto;margin-right: auto;">
+                    <br>
+                    <p>לאחר בניית הייצוג נסנן טונים לא נפוצים ומתוך 128 טונים נשאר עם 84.</p>
+                </section>
+                <h3>חלוקה למשפטים מוזיקלים וסינון משפטים שקטים</h3>
+                <section>
+                    <p>בשלב זה נעבור על כל המשפטים המוזיקלים שיצרנו ונסנן מתוכם משפטים שקטים - כאלו שקיימת בהן תיבה בה לא כל הכלים מנגנים.</p>
+                    <p>לדוגמה התיבה הבאה בה ניתן לראות כי הבס והמקהלה אינם מנגנים:</p>
+                    <br>
+                    <img src="{% static 'img/img_26.png' %}"  alt="exmaple" style="max-height: 30%; max-width: 30%;  display: block;margin-left: auto;margin-right: auto;">
+                </section>
+                <h3>שמירת הדטה סט המעובד</h3>
+                <section>
+                    <p>נשמור את כל הדטה סט המעובד לקובץ npy באמצעות ספריית numpy לשימוש בהמשך.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'assets/js/scrollspyNav.js' %}"></script>
+<script src="{% static 'plugins/jquery-step/jquery.steps.min.js' %}"></script>
+<script src="{% static 'plugins/jquery-step/custom-jquery.steps.js' %}"></script>
+{% endblock %}

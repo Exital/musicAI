@@ -1,0 +1,43 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+
+{% block page-title %}{% endblock %}
+
+{% block title %}מודל GAN{% endblock %}
+
+{% block body %}
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>תהליך הלמידה</h2>
+                <br><br>
+                <p>
+                תהליך הלמידה של מודל ה-GAN מורכב מתחרות בלתי פוסקת בין המבקר לגנרטור המתחרים אחד בשני במשחק "סכום אפס". למידת המבקר מתבססת על:
+                </p>
+                <ul>
+                    <li>מתן ניקוד לדוגמאות אמיתיות מתוך ה-dataset</li>
+                    <li>מתן ניקוד לדוגמאות לא אמיתיות שנוצרו ע"י הגנרטור לצרכי הערכה בלבד</li>
+                </ul>
+                <p>הגנרטור מייצר דוגמאות ושולח אותן למבקר למטרת הערכה והפידבק המתקבל ממנו(המבקר) מהווה בסיס לאימון הגנרטור.
+בצורה זו, הגנרטור והמבקר מתחרים אחד בשני ובמקביל גם מאמנים אחד את השני.</p>
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>פסאודו קוד</h2>
+                <br><br>
+
+                <img src="{% static 'img/img_27.png' %}"  alt="exmaple" style="max-height: 50%; max-width: 50%;  display: block;margin-left: auto;margin-right: auto;">
+                <br>
+                <p>הסברים מפורטים יותר ניתן למצוא בדו״ח הפרויקט</p>
+            </div>
+        </div>
+</div>
+
+{% endblock %}

@@ -51,5 +51,11 @@ urlpatterns = [
     path('gan/challenges', TemplateView.as_view(template_name='pages/gan_challenges.html'), name='gan-challenges'),
     path('gan/generate', gan_generate, name='gan_generate'),
     path('gan/experiments', TemplateView.as_view(template_name='pages/gan_experiments.html'), name='gan-experiments'),
+    path('gan/preprocess', TemplateView.as_view(template_name='pages/gan_preprocess.html'), name='gan-preprocess'),
+    path('gan/preprocess/interactive', TemplateView.as_view(template_name='pages/gan_preprocess_inter.html'),
+         name='gan-preprocess-inter'),
+    path('gan/training', TemplateView.as_view(template_name='pages/gan_training.html'), name='gan_training'),
+    path('gan/generate/process', TemplateView.as_view(template_name='pages/gan_generate_process.html'),
+         name='gan-generate-process'),
 
 ]

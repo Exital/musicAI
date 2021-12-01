@@ -1,0 +1,115 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+
+{% block page-title %}{% endblock %}
+
+{% block title %}מודל GAN{% endblock %}
+
+{% block body %}
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>ייצוג ה-Dataset</h2>
+                <br><br>
+                <p>
+ניתן לייצג קטע מוזיקלי של כלי בודד כטנסור(Tensor) מהצורה הבאה:
+                </p>
+                <img src="{% static 'img/img_20.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;">
+                <ul>
+                    <li>T - מייצג את מספר יחידות הזמן</li>
+                    <li>P - מייצג את מספר הטונים (pitches) האפשריים</li>
+                </ul>
+                <p>
+ניתן להרחיב ייצוג זה לייצוג עבור מספר כלים באמצעות הוספת מימד נוסף M כך שיתקבל הייצוג מהצורה -
+                </p>
+                <img src="{% static 'img/img_21.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;">
+
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>הכנת ה-Dataset</h2>
+                <br><br>
+                <p>
+לאחר בחירת ה- dataset, אנו ניצבים בפני אתגר נוסף – לא כל קבצי ה-Midi מורכבים מאותם כלי נגינה. על כן, נפתור בעיה זו באמצעות איחוד כלים דומים לכלי יחיד. כך למשל, קלידים, ופסנתר כנף יאוחדו יחד לפסנתר בודד. לבסוף, לאחר שלב האיחוד, ה-dataset  המעודכן יהיה אחיד כך שכל קובץ יכיל 4 כלים בדיוק לפי סדר משפחות הכלים שקבענו.
+בנוסף, לאחר בדיקות ומחקר על ה- dataset גילינו שקיימות 4 משפחות כלים נפוצות ביותר והן תופים, פסנתר, באס ומקהלה.
+                </p>
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+    <div class="widget-content-area br-4">
+        <div class="widget-one">
+
+            <h2>שלבי העיבוד המקדים</h2>
+            <br><br>
+            <ol>
+                <li>טעינת קבצי ה-Midi</li>
+                <li>יצירת הייצוג שלהם כמטריצות</li>
+                <li>סינון תווים לא נפוצים</li>
+                <li>חלוקה למפשטים מוזיקליים וסינון קטעים שקטים</li>
+                <li>שמירת הדטה המעובד</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+    <div class="widget-content-area br-4">
+        <div class="widget-one">
+
+            <h2>יצירת הייצוג שלהם כמטריצות</h2>
+            <br><br>
+            <p>
+                קוראים את קבצי ה-Midi באמצעות ספריית Pypianoroll ומשתמשים בייצוג כפי שהוסבר למעלה.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+    <div class="widget-content-area br-4">
+        <div class="widget-one">
+
+            <h2>סינון תווים לא נפוצים</h2>
+            <br><br>
+            <p>
+                בפרוטוקול Midi קיימים 128 טונים, אך אנחנו נצטמצם לתחום קטן יותר של 84 ונוריד את הטונים הגבוהים ביותר והנמוכים ביותר, מכיוון שהם פחות נפוצים.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+    <div class="widget-content-area br-4">
+        <div class="widget-one">
+
+            <h2>חלוקה למפשטים מוזיקליים וסינון קטעים שקטים</h2>
+            <br><br>
+            <p>
+                פיצול המטריצה למשפטים מוזיקליים בגודל 4 תיבות וסינון משפטים "שקטים" שבהם קיימת תיבה המכילה כלי שאינו מנגן כלל
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+    <div class="widget-content-area br-4">
+        <div class="widget-one">
+
+            <h2>שמירת הדטה המעובד</h2>
+            <br><br>
+            <p>שומרים את הדטה המעובד בקובץ npy</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

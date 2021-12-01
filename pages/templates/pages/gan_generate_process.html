@@ -1,0 +1,54 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+
+{% block page-title %}{% endblock %}
+
+{% block title %}מודל GAN{% endblock %}
+
+{% block body %}
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>תהליך היצירה</h2>
+                <br><br>
+                <p>בשלב הראשון של תהליך זה מייצרים:</p>
+                <ul>
+                    <li>וקטור רעש לשימוש של chords.</li>
+                    <li>וקטור רעש לשימוש של style.</li>
+                    <li>ארבעה וקטורי רעש, אחד לכל כלי לשימוש של melody.</li>
+                    <li>ארבעה וקטורי רעש, אחד לכל כלי לשימוש של groove.</li>
+                </ul>
+                <p>
+                    לאחר מכן, הגנרטור מקבל את הרעשים כקלט וכפלט מייצר דוגמא מההתפלגות עליה ביצע תהליך של למידה. בשלב האחרון, יש לבצע את התהליך ההפוך(פרסור) לייצוג קובץ midi שהוסבר בשלב העיבוד המקדים וזאת על מנת לקבל קובץ midi.
+                </p>
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>ארכיטקטורת הגנרטור</h2>
+                <br><br>
+                <img src="{% static 'img/img_19.png' %}"  alt="exmaple" style="max-height: 65%; max-width: 65%;  display: block;margin-left: auto;margin-right: auto;">
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>פסאודו קוד</h2>
+                <br><br>
+                <img src="{% static 'img/img_28.png' %}"  alt="exmaple" style="max-height: 50%; max-width: 50%;  display: block;margin-left: auto;margin-right: auto;">
+                <br>
+                <p>לאחר יצירת הדוגמה על ידי הגנרטור, יש לבצע את התהליך ההפוך של הייצוג שהוסבר תחת העיבוד המקדים כדי ליצור מהייצוג שהתקבל קובץ midi בחזרה.</p>
+            </div>
+        </div>
+</div>
+
+{% endblock %}

@@ -7,9 +7,7 @@ from torch import nn
 import matplotlib.pyplot as plt
 from music21 import converter
 from gan.src.settings import N_TRACKS, Z_DIM
-
-BASEDIR = pathlib.Path(__file__).parent.resolve()
-current_folder = os.path.expanduser(BASEDIR)
+from gan.src.gan import MidiGenerator
 
 
 class WassersteinLoss(nn.Module):
@@ -35,7 +33,14 @@ class GradientPenalty(nn.Module):
 
 
 def parseToMidi(pianoroll, midi_out_path, name="My_Track", jupyter_display_midi=False):
-    assert midi_out_path != None, "Incorrect out path"
+    """
+    Creates a midi file from pianoroll
+    :param pianoroll: np.ndarray, shape=(-1, n_tracks=4, n_bars=4, n_steps_per_bar=16, n_pitches=84)
+    :param midi_out_path: output directory path
+    :param name: output midi name
+    :param jupyter_display_midi: displays midi player if runs on jupyter notebook. Requires installed MusicScore3
+    :return: music21.stream.Stream object
+    """
     if not os.path.exists(midi_out_path):
         os.makedirs(midi_out_path)
     pianoroll = pianoroll.cpu().numpy().copy()
@@ -74,6 +79,13 @@ def initialize_weights(layer, mean=0.0, std=0.02):
 
 
 def plot_losses(losses, from_epoch=0, to_epoch=None):
+    """
+    Plots losses graph generated after training
+    :param losses: pandas.DataFrame loss object
+    :param from_epoch: plot start from epoch
+    :param to_epoch: plot end epoch
+    :return:
+    """
     if to_epoch is None:
         to_epoch = len(losses)
     else:
@@ -101,6 +113,14 @@ def plot_losses(losses, from_epoch=0, to_epoch=None):
 
 
 def generate_samples_from_gen(gen, out_path, num_samples=1, sample_name="My Track"):
+    """
+    Generate samples from generator
+    :param gen_path: generator torch module
+    :param out_path: output samples path
+    :param num_samples: num of samples to generate
+    :param sample_name: sample names
+    :return:
+    """
     for i in range(num_samples):
         chords = torch.randn(1, Z_DIM)
         style = torch.randn(1, Z_DIM)
@@ -115,5 +135,16 @@ def generate_samples_from_gen(gen, out_path, num_samples=1, sample_name="My Trac
 
 
 def generate_samples(gen_path: str, out_path, num_samples=1, sample_name="My Track"):
-    generator = torch.load(gen_path)
+    """
+    Generate samples from generator path
+    :param gen_path: generator.pt path
+    :param out_path: output samples path
+    :param num_samples: num of samples to generate
+    :param sample_name: sample names
+    :return:
+    """
+    generator = MidiGenerator(z_dim=32, hid_channels=1024, hid_features=1024, out_channels=1)
+    # generator = torch.load(gen_path)
+    generator.load_state_dict(torch.load(gen_path))
+    generator.eval()
     generate_samples_from_gen(generator, out_path, num_samples, sample_name)
