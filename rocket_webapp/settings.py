@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'virtual_piano',
     'rnn_lstm',
+    'gan',
 ]
 
 MIDDLEWARE = [
