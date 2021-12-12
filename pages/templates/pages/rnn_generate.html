@@ -5,8 +5,9 @@
 <link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery-step/jquery.steps.css' %}">
 <link rel="stylesheet" href="{% static 'style/styles.css' %}">
 <script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
+<link href="{% static 'plugins/loaders/custom-loader.css' %}" rel="stylesheet" type="text/css" />
 <style>
-#pageloader
+#generating
 {
   background: rgba( 255, 255, 255, 0.8 );
   display: none;
@@ -23,7 +24,7 @@
 <div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
         <div class="widget-content-area br-4">
             <div class="widget-one">
-                <div id="pageloader">
+                <div id="generating">
                     <div class="loader mx-auto"></div>
                 </div>
                 <h2>יצירת מלודיות פסנתר (כלי יחיד) באמצעות RNN LSTM</h2>
@@ -56,7 +57,7 @@
 <script>
     $(document).ready(function(){
     $("#myform").on("submit", function(){
-    $("#pageloader").fadeIn();
+    $("#generating").fadeIn();
     });//submit
     });//document ready
 </script>
