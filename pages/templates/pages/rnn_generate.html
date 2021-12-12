@@ -52,13 +52,7 @@
 
 {% block scripts %}
 <script src="{% static 'assets/js/scrollspyNav.js' %}"></script>
-    <script>
-    $('.loaderDiv').show();
-get('', function(data) {
-   alert(data);
-   $('.loaderDiv').hide();
-})
-    </script>
+
 <script>
     $(document).ready(function(){
     $("#myform").on("submit", function(){

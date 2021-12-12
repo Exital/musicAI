@@ -34,7 +34,7 @@
                 <p>
                     לא כל הלחנים מוצלחים, מומלץ לנסות כמה פעמים.
                 </p>
-                <form method="POST">
+                <form method="POST" id="myform">
                     {% csrf_token %}
                     <input type="submit" value="צור לחן" class="mt-4 btn btn-primary"/>
                     <a class="mt-4 btn btn-danger" href="{% url 'pages:gan_generate' %}" role="button">עצור נגינה</a>
@@ -59,13 +59,6 @@
 
 {% block scripts %}
 <script src="{% static 'assets/js/scrollspyNav.js' %}"></script>
-    <script>
-    $('.loaderDiv').show();
-get('', function(data) {
-   alert(data);
-   $('.loaderDiv').hide();
-})
-    </script>
 <script>
     $(document).ready(function(){
     $("#myform").on("submit", function(){
