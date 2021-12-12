@@ -44,7 +44,7 @@ urlpatterns = [
     path('rnn/generate/process', TemplateView.as_view(template_name='pages/rnn_generate_process.html'),
          name='rnn-generate-process'),
     path('rnn/experiments', TemplateView.as_view(template_name='pages/rnn_experiments.html'), name='rnn-experiments'),
-
+    path('results_poll', TemplateView.as_view(template_name='pages/results_poll.html'), name='results-poll'),
 
     # GAN model
     path('gan/intro', TemplateView.as_view(template_name='pages/gan_intro.html'), name='gan-intro'),

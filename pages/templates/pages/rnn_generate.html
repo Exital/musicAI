@@ -5,13 +5,27 @@
 <link rel="stylesheet" type="text/css" href="{% static 'plugins/jquery-step/jquery.steps.css' %}">
 <link rel="stylesheet" href="{% static 'style/styles.css' %}">
 <script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
+<style>
+#pageloader
+{
+  background: rgba( 255, 255, 255, 0.8 );
+  display: none;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+}
+
+</style>
 {% endblock %}
 
 {% block body %}
 <div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
         <div class="widget-content-area br-4">
             <div class="widget-one">
-
+                <div id="pageloader">
+                    <div class="loader mx-auto"></div>
+                </div>
                 <h2>יצירת מלודיות פסנתר (כלי יחיד) באמצעות RNN LSTM</h2>
                 <br>
                 <p class="">ניתן לנגן בפסנתר כדי לקבוע את ה-seed ליצירת המלודיה.</p>
@@ -25,6 +39,9 @@
 <form method="POST">
     {% csrf_token %}
 </form>
+{% if generated %}
+    <img src="{% static 'img/speaker-icon-29707.png' %}"  alt="exmaple" style="max-height: 5%; max-width: 5%;  display: block;margin-left: auto;margin-right: auto;">
+{% endif %}
 {% if generated %}
     <script>
         MIDIjs.play('{% static 'midi/generated/mel.mid' %}');
@@ -42,4 +59,11 @@ get('', function(data) {
    $('.loaderDiv').hide();
 })
     </script>
+<script>
+    $(document).ready(function(){
+    $("#myform").on("submit", function(){
+    $("#pageloader").fadeIn();
+    });//submit
+    });//document ready
+</script>
 {% endblock %}

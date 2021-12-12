@@ -1,0 +1,117 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+
+
+{% block page-title %}{% endblock %}
+
+{% block title %}סקר דעת קהל{% endblock %}
+{% block head %}
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+{% endblock %}
+{% block body %}
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+
+                <h2>סקר דעת קהל</h2>
+                <br><br>
+                <p>
+                    על מנת להעריך את איכות המלודיות שנוצרו באמצעות המודלים שלנו, החלטנו לערוך סקר דעת קהל ובו 8 מלודיות.
+                </p>
+                <ul>
+                    <li>3 מלודיות ממודל ה-RNN</li>
+                    <li>3 מלודיות ממודל ה-GAN</li>
+                    <li>2 מלודיות מהדטה סט כקבוצת בקרה</li>
+                </ul>
+                <p>
+                    בסקר עצמו ציינו כי כל המלודיות נוצרו באמצעות בינה מלאכותית וזאת על מנת לקבל תוצאות אמינות וכנות. החלטנו שמדד סביר עבור הצלחת הפרויקט, יהיה בהתאם לציון של קבוצת הבקרה. כלומר, ככל שהציון של ששת המלודיות שנוצרו ע"י המודלים יהיה קרוב יותר לציון שקיבלו שתי המלודיות הנמצאות בקבוצת הבקרה, כך נדע להעריך את למידת המודל. את הסקר ערכנו באמצעות פלטפורמת google forms שבסופו התקבלו 105 תגובות. בטבלה מטה, ניתן לראות את סיכום התוצאות:
+                </p>
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+                <table style="margin-right: auto; margin-left: auto; text-align: center">
+                    <tr>
+                        <th>מספר</th>
+                        <th>מודל</th>
+                        <th>גרף</th>
+                        <th>ציון ממוצע</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>GAN</td>
+                        <td><img src="{% static 'img/img_29.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;"></td>
+                        <td>3.57</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>GAN</td>
+                        <td><img src="{% static 'img/img_30.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;"></td>
+                        <td>3.03</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>GAN</td>
+                        <td><img src="{% static 'img/img_31.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;"></td>
+                        <td>3.25</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>RNN</td>
+                        <td><img src="{% static 'img/img_32.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;"></td>
+                        <td>2.82</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>RNN</td>
+                        <td><img src="{% static 'img/img_33.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;"></td>
+                        <td>3.31</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>RNN</td>
+                        <td><img src="{% static 'img/img_34.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;"></td>
+                        <td>3.16</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>בקרה</td>
+                        <td><img src="{% static 'img/img_35.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;"></td>
+                        <td>3.28</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>בקרה</td>
+                        <td><img src="{% static 'img/img_36.png' %}"  alt="exmaple" style="max-height: 40%; max-width: 40%;  display: block;margin-left: auto;margin-right: auto;"></td>
+                        <td>3.41</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-4">
+            <div class="widget-one">
+                <p>
+                    לאחר חישוב פשוט שביצענו, קיבלנו כי ממוצע המלודיות שנוצרו על ידי מודלי הלמידה, ה-GAN וה-RNN, הוא 3.19 לעומת ממוצע קבוצת הבקרה שהוא 3.34. כלומר, קיבלנו כי האנשים שביצעו את הסקר, כמעט ולא הצליחו להבדיל בין קבוצת הבקרה לבין מלודיה שנוצרה באמצעות אחד מהמודלים. בנוסף, קיבלנו כי הממוצע הכולל של המלודיות שנוצרו על ידי המודלים היה:
+                </p>
+                <ul>
+                    <li> עבור מודל ה-GAN התקבל ממוצע של 3.28.</li>
+                    <li>עבור מודל ה-RNN התקבל ממוצע של 3.1.</li>
+                </ul>
+                <p>
+                    כמו כן, נבחין כי מלודיה מספר 1 קיבלה ניקוד גבוה יותר מאלו של קבוצות הבקרה מה שמעיד על איכות היצירה של המודלים. מכאן, נוכל להסיק כי המלודיות שהמודלים יצרו הינן באיכות טובה.
+                </p>
+            </div>
+        </div>
+</div>
+{% endblock %}

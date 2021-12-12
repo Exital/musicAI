@@ -45,7 +45,7 @@ def rnn_lstm_generate_multi(request):
     if request.method == "POST":
         trained_model = os.path.join(BASE_DIR, 'rnn_lstm', 'static', 'trained_models', 'multi_tracks_model')
         gen = MelodyGenerator(trained_model)
-        song = gen.generate_melody(500, 64, 0.85)
+        song = gen.generate_melody(500, 64, 1.1)
         if os.getenv('DEBUG'):
             mel_path = os.path.join(BASE_DIR, 'rnn_lstm', 'static', 'midi', 'generated', 'mel.mid')
         else:
