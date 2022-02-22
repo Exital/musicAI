@@ -3,6 +3,8 @@
 [MusicAI](https://github.com/Exital/musicAI) is a melody generation web app project showing the work of our
 AI final project [236502](https://github.com/LiorSherman/236502).
 
+[Project report](https://github.com/Exital/musicAI/blob/master/docs/Web%20Application%20-%20MusicAI.pdf) - click here for the full report.
+
 ## Prerequisites
 
 > __Below we assume the working directory is the repository root.__
