@@ -1,7 +1,7 @@
 pypianoroll==1.0.4
-Django==3.2.5
-music21==7.1.0
-torch==1.9.0
-matplotlib==3.4.3
+Django==4.2.2
+music21==8.3.0
+torch==2.0.1
+matplotlib==3.7.1
 numpy==1.25.0
-python-dotenv==0.19.2
+python-dotenv==1.0.0

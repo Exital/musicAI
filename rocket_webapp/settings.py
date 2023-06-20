@@ -31,7 +31,7 @@ DEBUG = os.getenv('DEBUG')
 if DEBUG is None:
     DEBUG = True
 
-ALLOWED_HOSTS = ['musicAI.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
