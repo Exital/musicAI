@@ -1,5 +1,5 @@
-# Use Python Alpine as the base image
-FROM python:3.10-alpine
+# Use Python 3.9.6 as the base image
+FROM python:3.9.6
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -9,14 +9,12 @@ ENV DEBUG True
 # Set the working directory in the container
 WORKDIR /code
 
-# Install dependencies
-RUN apk update \
-    && apk add --virtual build-deps gcc python3-dev musl-dev
-
-# Copy requirements.txt to the container
-COPY requirements.txt /code/
+# Install system dependencies
+RUN apt-get update \
+    && apt-get install -y libpq-dev
 
 # Install Python dependencies
+COPY requirements.txt /code/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 

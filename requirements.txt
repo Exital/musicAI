@@ -1,4 +1,4 @@
-pypianoroll==1.0.4
+pypianoroll==1.0.1
 Django==4.2.2
 music21==8.3.0
 torch==2.0.1
